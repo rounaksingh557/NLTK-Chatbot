@@ -1,0 +1,14 @@
+#Folders
+/__pycache__
+bin/
+lib/
+lib64/
+lib64
+include/
+
+#Files
+chatbot_model.h5
+classes.pkl
+words.pkl
+pyvenv.cfg
+download.ipynb
