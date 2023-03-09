@@ -65,3 +65,5 @@ def startPredict():
     print("Hi I am Alexa. Please type something.")
 
     predict_on()
+
+startPredict()
