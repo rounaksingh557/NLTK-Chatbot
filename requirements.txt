@@ -1,4 +1,4 @@
 black
 numpy
 nltk
-tensorflow
+tensorflow-cpu
