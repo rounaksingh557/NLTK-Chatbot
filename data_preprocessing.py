@@ -16,7 +16,7 @@ train_data_file = open("intents.json").read()
 intents = json.loads(train_data_file)
 
 
-def get_stem_words(words, ignore_words):
+def get_stem_words(words, ignore_words): # Getting all the stem in the array stem_words
     stem_words = []
     for word in words:
         if word not in ignore_words:
@@ -25,7 +25,7 @@ def get_stem_words(words, ignore_words):
     return stem_words
 
 
-def create_bot_corpus(words, classes, pattern_word_tags_list, ignore_words):
+def create_bot_corpus(words, classes, pattern_word_tags_list, ignore_words): # It will gives a list of the all the stem words, classes and patter word tag list.
     for intent in intents["intents"]:
         for pattern in intent["patterns"]:
             pattern_word = nltk.word_tokenize(pattern)
@@ -42,7 +42,7 @@ def create_bot_corpus(words, classes, pattern_word_tags_list, ignore_words):
     return stem_words, classes, pattern_word_tags_list
 
 
-def bag_of_words_encoding(stem_words, pattern_word_tags_list):
+def bag_of_words_encoding(stem_words, pattern_word_tags_list): # In the form of 0 and 1 we are encoding the bag of words.
     bag = []
     for word_tags in pattern_word_tags_list:
         pattern_words = word_tags[0]
@@ -57,7 +57,7 @@ def bag_of_words_encoding(stem_words, pattern_word_tags_list):
     return np.array(bag)
 
 
-def class_label_encoding(classes, pattern_word_tags_list):
+def class_label_encoding(classes, pattern_word_tags_list): # Encode the class names.
     labels = []
     for word_tags in pattern_word_tags_list:
         labels_encoding = list([0] * len(classes))
@@ -68,7 +68,7 @@ def class_label_encoding(classes, pattern_word_tags_list):
     return np.array(labels)
 
 
-def preprocess_train_data():
+def preprocess_train_data(): # Final function.
     stem_words, tag_classes, word_tags_list = create_bot_corpus(
         words, classes, pattern_word_tags_list, ignore_words
     )
